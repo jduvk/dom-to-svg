@@ -6,3 +6,8 @@ window.takeSVGScreenshot = async function takeSVGScreenshot(cssSelector){
 	const svgString = new XMLSerializer().serializeToString(svgDocument);
 	callHTMLClient(JSON.stringify({ Sender: "TakeSVGScreenshot", Data: svgString }));
 }
+
+if (window.requestSVGScreenshot){
+	window.takeSVGScreenshot(window.requestSVGScreenshot);
+	delete window.requestSVGScreenshot;
+}
